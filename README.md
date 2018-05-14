@@ -1,4 +1,5 @@
-# BlendIt App
+# BlendIt App 
+![stability-wip](https://img.shields.io/badge/stability-work_in_progress-lightgrey.svg)
 
 **BlendIt** is an app aiming to help people find gourmet recipes with a search engine that provides results based on the ingredients available in the fridge.
 
