@@ -1,0 +1,21 @@
+{
+  "name": "melbourne_cocoa_heads",
+  "version": "1.0.0",
+  "description": "API_for_accessing_published_Events_on_the_melbournecocoaheads_com_website",
+  "license": "MIT",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "./node_modules/mocha/bin/mocha --recursive"
+  },
+  "browser": {
+    "fs": false
+  },
+  "dependencies": {
+    "superagent": "3.5.2"
+  },
+  "devDependencies": {
+    "mocha": "~2.3.4",
+    "sinon": "1.17.3",
+    "expect.js": "~0.3.1"
+  }
+}
