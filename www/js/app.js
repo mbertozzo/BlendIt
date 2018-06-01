@@ -7,6 +7,8 @@ import Framework7Icons from 'framework7-icons/css/framework7-icons.css';
 import FontAwesome from 'font-awesome/css/font-awesome.css';
 
 import App from './components/App';
+import Login from './components/Login';
+import Logged from './components/Logged';
 import LeftMenu from './components/LeftMenu';
 import Home from './components/Home';
 import Recipes from './components/Recipes';
@@ -17,16 +19,26 @@ Vue.use(Framework7Vue, Framework7);
 
 const routes = [
 	{
-		path: '/',
-		component : Home, 
+		path: '/login',
+		component : Login
+  },
+  {
+		path: '/logged/',
+    component : Logged,
+    tabs: [{
+      path: '/',
+      id: 'home',
+      component: Home
+    },
+    {
+      path: '/recipes',
+      id: 'recipes',
+      component : Recipes
+    }]
   },
   {
 		path: '/left-menu',
 		component : LeftMenu
-  },
-  {
-		path: '/recipes',
-		component : Recipes
   },
   {
     path: '/detail/:id',

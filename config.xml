@@ -9,6 +9,7 @@
     </author>
     <content src="index.bundle.html" />
     <access origin="*" />
+    <access origin="https://*.firebaseio.com" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
     <allow-intent href="tel:*" />
