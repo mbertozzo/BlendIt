@@ -1,6 +1,10 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
+import VueMaterial from 'vue-material';
+import 'vue-material/dist/vue-material.min.css';
+import 'vue-material/dist/theme/default.css';
+
 import App from './components/App';
 import Home from './components/Home';
 import Recipes from './components/Recipes';
@@ -32,6 +36,8 @@ let MyApp = {
     });
   }
 }
+
+Vue.use(VueMaterial);
 
 export {
   MyApp
