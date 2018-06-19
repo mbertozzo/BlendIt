@@ -3,7 +3,8 @@ import VueRouter from 'vue-router';
 
 import VueMaterial from 'vue-material';
 import 'vue-material/dist/vue-material.min.css';
-import 'vue-material/dist/theme/default.css';
+/* import 'vue-material/dist/theme/default.css'; */
+import '../css/theme.scss';
 
 import App from './components/App';
 import Home from './components/Home';

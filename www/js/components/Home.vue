@@ -12,7 +12,7 @@
     </md-toolbar>
     <md-tabs class="md-primary" md-alignment="fixed" md-elevation="4">
       <md-tab id="tab-home" md-label="Home"><recipes-list></recipes-list></md-tab>
-      <md-tab id="tab-pages" md-label="Pages">Some content</md-tab>
+      <md-tab id="tab-pages" md-label="Pages"><recipe-add></recipe-add></md-tab>
       <md-tab id="tab-posts" md-label="Posts"></md-tab>
       <md-tab id="tab-favorites" md-label="Favorites"></md-tab>
     </md-tabs>
@@ -88,10 +88,12 @@
 
 <script>
 import RecipesList from './RecipesList.vue';
+import RecipeAdd from './RecipeAdd.vue';
 export default {
   name: 'home',
   components: {
-    'recipes-list': RecipesList
+    'recipes-list': RecipesList,
+    'recipe-add': RecipeAdd
   },
   data: () => ({
     showNavigation: false,
