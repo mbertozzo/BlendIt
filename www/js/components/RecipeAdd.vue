@@ -113,7 +113,7 @@
       </md-card-actions>
     </md-card>
 
-    <md-snackbar :md-active.sync="userSaved">The recipe {{ recipeName }} was saved with success!</md-snackbar>
+    <md-snackbar :md-active.sync="recipeSaved">The recipe {{ recipeName }} was saved with success!</md-snackbar>
   </form>
 </template>
 
@@ -154,9 +154,9 @@
         ingredients: null,
         directions: null,
       },
-      userSaved: false,
+      recipeSaved: false,
       sending: false,
-      lastUser: null
+      recipeName: null
     }),
     validations: {
       form: {
@@ -247,7 +247,7 @@
         // Instead of this timeout, here you can call your API
        /*  window.setTimeout(() => {
           this.recipeName = `${this.form.recipeName}`
-          this.userSaved = true
+          this.recipeSaved = true
           this.sending = false
           this.clearForm()
         }, 1500) */
@@ -261,7 +261,7 @@
       },
       connCompleted () {
         this.recipeName = `${this.form.recipeName}`
-        this.userSaved = true
+        this.recipeSaved = true
         this.sending = false
         this.clearForm()
       }

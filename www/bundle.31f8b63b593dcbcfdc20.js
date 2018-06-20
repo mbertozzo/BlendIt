@@ -12470,9 +12470,9 @@ function updateLink (link, options, obj) {
       ingredients: null,
       directions: null
     },
-    userSaved: false,
+    recipeSaved: false,
     sending: false,
-    lastUser: null
+    recipeName: null
   }),
   validations: {
     form: {
@@ -12561,7 +12561,7 @@ function updateLink (link, options, obj) {
       // Instead of this timeout, here you can call your API
       /*  window.setTimeout(() => {
          this.recipeName = `${this.form.recipeName}`
-         this.userSaved = true
+         this.recipeSaved = true
          this.sending = false
          this.clearForm()
        }, 1500) */
@@ -12575,7 +12575,7 @@ function updateLink (link, options, obj) {
     },
     connCompleted() {
       this.recipeName = `${this.form.recipeName}`;
-      this.userSaved = true;
+      this.recipeSaved = true;
       this.sending = false;
       this.clearForm();
     }
@@ -12702,9 +12702,46 @@ function withParams(paramsOrClosure, maybeValidator) {
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["a"] = ({
-  name: 'recipes'
+  name: 'recipes-view',
+  data: () => ({
+    id: 0,
+    recipe: []
+  }),
+  created() {
+    this.id = this.$route.params.id;
+  },
+  mounted() {
+    this.fetchRecipe();
+  },
+  methods: {
+    fetchRecipe: function () {
+      //definisco un metodo che poi potrò richiamare altrove
+      fetch('http://localhost:3000/recipes/view/' + this.id).then(function (response) {
+        return response.json();
+      }).then(response => this.recipe = response);
+    }
+  }
 });
 
 /***/ }),
@@ -12763,7 +12800,7 @@ app.initialize();
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__css_theme_scss___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__css_theme_scss__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_App__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__components_Home__ = __webpack_require__(30);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_Recipes__ = __webpack_require__(68);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__components_RecipeView__ = __webpack_require__(68);
 
 
 
@@ -12782,13 +12819,16 @@ const routes = [{
   path: '/',
   component: __WEBPACK_IMPORTED_MODULE_6__components_Home__["a" /* default */]
 }, {
-  path: '/recipes',
+  path: '/view/:id',
+  name: 'RecipeView',
   components: {
-    default: __WEBPACK_IMPORTED_MODULE_7__components_Recipes__["a" /* default */]
+    default: __WEBPACK_IMPORTED_MODULE_7__components_RecipeView__["a" /* default */]
   }
 }];
 
 const router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({ routes });
+
+let bus = new __WEBPACK_IMPORTED_MODULE_0_vue___default.a({});
 
 let MyApp = {
   initialize: function () {
@@ -46621,9 +46661,21 @@ var render = function() {
           _c(
             "md-card-actions",
             [
-              _c("md-button", [_vm._v("Action")]),
-              _vm._v(" "),
-              _c("md-button", [_vm._v("Action")])
+              _c(
+                "md-button",
+                [
+                  _c(
+                    "router-link",
+                    {
+                      attrs: {
+                        to: { name: "RecipeView", params: { id: el._id } }
+                      }
+                    },
+                    [_vm._v("View")]
+                  )
+                ],
+                1
+              )
             ],
             1
           )
@@ -48823,10 +48875,10 @@ var render = function() {
       _c(
         "md-snackbar",
         {
-          attrs: { "md-active": _vm.userSaved },
+          attrs: { "md-active": _vm.recipeSaved },
           on: {
             "update:mdActive": function($event) {
-              _vm.userSaved = $event
+              _vm.recipeSaved = $event
             }
           }
         },
@@ -49115,9 +49167,9 @@ if (false) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_Recipes_vue__ = __webpack_require__(13);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_RecipeView_vue__ = __webpack_require__(13);
 /* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_440a2008_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_Recipes_vue__ = __webpack_require__(71);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_646d66cc_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_RecipeView_vue__ = __webpack_require__(71);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(3);
 var disposed = false
 function injectStyle (context) {
@@ -49139,15 +49191,15 @@ var __vue_scopeId__ = null
 var __vue_module_identifier__ = null
 
 var Component = Object(__WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__["a" /* default */])(
-  __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_Recipes_vue__["a" /* default */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_440a2008_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_Recipes_vue__["a" /* render */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_440a2008_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_Recipes_vue__["b" /* staticRenderFns */],
+  __WEBPACK_IMPORTED_MODULE_0__babel_loader_node_modules_vue_loader_lib_selector_type_script_index_0_RecipeView_vue__["a" /* default */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_646d66cc_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_RecipeView_vue__["a" /* render */],
+  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_646d66cc_hasScoped_false_optionsId_0_buble_transforms_node_modules_vue_loader_lib_selector_type_template_index_0_RecipeView_vue__["b" /* staticRenderFns */],
   __vue_template_functional__,
   __vue_styles__,
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "www/js/components/Recipes.vue"
+Component.options.__file = "www/js/components/RecipeView.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -49156,9 +49208,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-440a2008", Component.options)
+    hotAPI.createRecord("data-v-646d66cc", Component.options)
   } else {
-    hotAPI.reload("data-v-440a2008", Component.options)
+    hotAPI.reload("data-v-646d66cc", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -49180,13 +49232,13 @@ if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
 var add = __webpack_require__(2).default
-var update = add("d231a18a", content, false, {});
+var update = add("bcc294ca", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"optionsId\":\"0\",\"vue\":true,\"scoped\":false,\"sourceMap\":false}!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Recipes.vue", function() {
-     var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"optionsId\":\"0\",\"vue\":true,\"scoped\":false,\"sourceMap\":false}!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Recipes.vue");
+   module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"optionsId\":\"0\",\"vue\":true,\"scoped\":false,\"sourceMap\":false}!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./RecipeView.vue", function() {
+     var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"optionsId\":\"0\",\"vue\":true,\"scoped\":false,\"sourceMap\":false}!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./RecipeView.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -49204,7 +49256,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.md-layout {\n  padding-top: 15px;\n  padding-left: 10px;\n  padding-right: 10px;\n}\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* .md-layout {\n  padding-top: 15px;\n  padding-left: 10px;\n  padding-right: 10px;\n}\n.md-layout-item {\n  margin: 5px;\n}\n.md-title {\n  margin-top: 0px;\n} */\n", ""]);
 
 // exports
 
@@ -49220,9 +49272,56 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "md-layout md-gutter" }, [
-    _vm._v("\n  Recipes\n")
-  ])
+  return _c(
+    "div",
+    { staticClass: "page-container" },
+    [
+      _c(
+        "md-app",
+        { attrs: { "md-mode": "fixed" } },
+        [
+          _c(
+            "md-app-toolbar",
+            { staticClass: "md-primary" },
+            [
+              _c(
+                "md-button",
+                { staticClass: "md-icon-button" },
+                [
+                  _c(
+                    "router-link",
+                    { attrs: { to: "/" } },
+                    [_c("md-icon", [_vm._v("arrow_back")])],
+                    1
+                  )
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _vm._l(_vm.recipe, function(el) {
+                return _c("span", { key: el._id, staticClass: "md-title" }, [
+                  _vm._v(_vm._s(el.name))
+                ])
+              })
+            ],
+            2
+          ),
+          _vm._v(" "),
+          _c("md-app-content", [
+            _c(
+              "div",
+              { staticClass: "md-layout md-gutter" },
+              _vm._l(_vm.recipe, function(el) {
+                return _c("p", { key: el._id }, [_vm._v(_vm._s(el.directions))])
+              })
+            )
+          ])
+        ],
+        1
+      )
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -49230,7 +49329,7 @@ render._withStripped = true
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-440a2008", { render: render, staticRenderFns: staticRenderFns })
+    require("vue-hot-reload-api")      .rerender("data-v-646d66cc", { render: render, staticRenderFns: staticRenderFns })
   }
 }
 

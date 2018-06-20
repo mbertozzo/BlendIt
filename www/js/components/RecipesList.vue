@@ -10,8 +10,8 @@
       </md-card-content>
 
       <md-card-actions>
-        <md-button>Action</md-button>
-        <md-button>Action</md-button>
+        <md-button><router-link :to="{name: 'RecipeView', params: {id: el._id}}">View</router-link></md-button>
+        <!-- <md-button>Action</md-button> -->
       </md-card-actions>
     </md-card>
   </div>
@@ -34,11 +34,11 @@
 <script>
 export default {
   name: 'recipes-list',
-   data: () => ({
+  data: () => ({
     recipes: []
   }),
   mounted(){
-    this.fetchRecipes(); 
+    this.fetchRecipes();
   },  
   methods: {
     fetchRecipes: function() {   //definisco un metodo che poi potrò richiamare altrove

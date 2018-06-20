@@ -8,7 +8,7 @@ import '../css/theme.scss';
 
 import App from './components/App';
 import Home from './components/Home';
-import Recipes from './components/Recipes';
+import RecipeView from './components/RecipeView';
 
 Vue.use(VueRouter);
 
@@ -18,14 +18,17 @@ const routes = [
 		component : Home, 
   },
   {
-		path: '/recipes',
+    path: '/view/:id',
+    name: 'RecipeView',
 		components : {
-      default: Recipes
-    }
+      default: RecipeView
+    },
 	}
 ];
 
 const router = new VueRouter({routes});
+
+let bus = new Vue({})
 
 let MyApp = {
   initialize: function() {
