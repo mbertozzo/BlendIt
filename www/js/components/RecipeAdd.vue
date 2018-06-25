@@ -32,6 +32,7 @@
               <label for="hour">Hours</label>
               <md-select name="hour" id="hour" v-model="form.hour" md-dense :disabled="sending">
                 <md-option></md-option>
+                <md-option value="0">0</md-option>
                 <md-option value="1">1</md-option>
                 <md-option value="2">2</md-option>
                 <md-option value="3">3</md-option>
