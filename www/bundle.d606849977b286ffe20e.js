@@ -12254,11 +12254,14 @@ function updateLink (link, options, obj) {
   }),
   mounted() {
     this.fetchRecipes();
+    this.$root.$on('updateList', () => {
+      this.fetchRecipes();
+    });
   },
   methods: {
     fetchRecipes: function () {
       //definisco un metodo che poi potrò richiamare altrove
-      fetch('https://blenditapp.herokuapp.com/recipes/list').then(function (response) {
+      fetch('http://localhost:3000/recipes/list').then(function (response) {
         return response.json();
       }).then(response => this.recipes = response);
     }
@@ -12491,7 +12494,7 @@ function updateLink (link, options, obj) {
         'Content-Type': 'application/json'
       });
 
-      fetch('https://blenditapp.herokuapp.com/recipes/add', {
+      fetch('http://localhost:3000/recipes/add', {
         method: 'POST',
         headers: myHeaders,
         body: JSON.stringify({
@@ -12534,6 +12537,7 @@ function updateLink (link, options, obj) {
       this.recipeSaved = true;
       this.sending = false;
       this.clearForm();
+      this.$root.$emit('updateList');
     }
   }
 });
@@ -12754,7 +12758,7 @@ function withParams(paramsOrClosure, maybeValidator) {
   methods: {
     fetchRecipe: function () {
       //definisco un metodo che poi potrò richiamare altrove
-      fetch('https://blenditapp.herokuapp.com/recipes/view/' + this.id).then(function (response) {
+      fetch('http://localhost:3000/recipes/view/' + this.id).then(function (response) {
         return response.json();
       }).then(response => this.recipe = response);
     }

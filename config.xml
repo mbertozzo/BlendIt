@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.matteobertozzo.blendit" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.mohole.blendit" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>BlendIt</name>
     <description>
-        A sample Apache Cordova application that responds to the deviceready event.
+        An app that allows to share recipes with all the users
     </description>
-    <author email="dev@cordova.apache.org" href="http://cordova.io">
-        Apache Cordova Team
+    <author email="riggio.francesco@gmail.com" href="https://scuola.mohole.it">
+        Matteo Bertozzo | Mohole Team
     </author>
     <content src="index.bundle.html" />
     <access origin="*" />
@@ -17,6 +17,12 @@
     <allow-intent href="geo:*" />
     <platform name="android">
         <allow-intent href="market:*" />
+        <icon density="ldpi" src="res/icon/android/mipmap-ldpi/blendit.png" />
+        <icon density="hdpi" src="res/icon/android/mipmap-hdpi/blendit.png" />
+        <icon density="mdpi" src="res/icon/android/mipmap-mdpi/blendit.png" />
+        <icon density="xhdpi" src="res/icon/android/mipmap-xhdpi/blendit.png" />
+        <icon density="xxhdpi" src="res/icon/android/mipmap-xxhdpi/blendit.png" />
+        <icon density="xxxhdpi" src="res/icon/android/mipmap-xxxhdpi/blendit.png" />
     </platform>
     <platform name="ios">
         <allow-intent href="itms:*" />

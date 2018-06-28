@@ -39,6 +39,9 @@ export default {
   }),
   mounted(){
     this.fetchRecipes();
+    this.$root.$on('updateList', () => {
+      this.fetchRecipes();
+    })
   },  
   methods: {
     fetchRecipes: function() {   //definisco un metodo che poi potrò richiamare altrove

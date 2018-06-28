@@ -265,6 +265,7 @@
         this.recipeSaved = true
         this.sending = false
         this.clearForm()
+        this.$root.$emit('updateList');
       }
     }
   }
